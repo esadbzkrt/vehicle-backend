@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 public class Vehicle {
 
     @Id
+    @GeneratedValue(generator = "vehicle_id_seq")
     Long id;
     @Column(unique = true)
     String plate;
@@ -19,19 +20,19 @@ public class Vehicle {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "model_id", nullable = false)
     Model model;
-
+    @Column(nullable = false)
     Number modelYear;
 
     @Column(nullable = true)
     String notes;
 
     @Column(nullable = true)
-    BigDecimal longitude;
+    Double longitude;
 
     @Column(nullable = true)
-    BigDecimal latitude;
+    Double latitude;
 
     @Column(nullable = true)
-    BigDecimal direction;
+    Double direction;
 
 }

@@ -1,7 +1,7 @@
 package com.example.vehiclebackend.controller;
 
 import com.example.vehiclebackend.entity.Vehicle;
-import com.example.vehiclebackend.request.Vehicle.VehicleUpdateRequest;
+import com.example.vehiclebackend.request.VehicleUpdateRequest;
 import com.example.vehiclebackend.service.VehicleService;
 import org.springframework.web.bind.annotation.*;
 

@@ -2,21 +2,17 @@ package com.example.vehiclebackend.entity;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "models")
 @Data
 public class Model {
     @Id
+    @GeneratedValue(generator = "model_id_seq")
     Long id;
-
     @Column(nullable = false)
     String brand;
-
-    @Column(nullable = false)
+    @Column(unique = true , nullable = false)
     String model;
 }

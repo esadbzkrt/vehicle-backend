@@ -22,7 +22,7 @@ public class ModelController {
     }
 
     @PostMapping
-    public Model createModel(Model model) {
+    public Model createModel(@RequestBody Model model) {
         return modelService.saveModel(model);
     }
 
@@ -34,5 +34,10 @@ public class ModelController {
     @GetMapping("/brands/{brand}")
     public List<Model> getModelByBrand(@PathVariable String brand) {
         return modelService.getModelByBrand(brand);
+    }
+
+    @DeleteMapping("/{modelId}")
+    public void deleteModelById(@PathVariable Long modelId) {
+        modelService.deleteModelById(modelId);
     }
 }

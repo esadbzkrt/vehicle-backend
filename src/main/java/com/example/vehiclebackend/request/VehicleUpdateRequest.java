@@ -1,4 +1,4 @@
-package com.example.vehiclebackend.request.Vehicle;
+package com.example.vehiclebackend.request;
 
 import lombok.Data;
 
@@ -10,4 +10,8 @@ public class VehicleUpdateRequest {
     Long modelId;
     Number modelYear;
     String notes;
+    Double longitude;
+    Double latitude;
+    Double direction;
+
 }

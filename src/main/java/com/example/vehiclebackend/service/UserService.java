@@ -40,6 +40,11 @@ public class UserService {
     }
 
     public void deleteUserById(Long userId) {
-        userRepository.deleteById(userId);
+        try {
+            userRepository.deleteById(userId);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 }

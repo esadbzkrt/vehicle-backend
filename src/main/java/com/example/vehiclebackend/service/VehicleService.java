@@ -2,7 +2,7 @@ package com.example.vehiclebackend.service;
 
 import com.example.vehiclebackend.entity.Vehicle;
 import com.example.vehiclebackend.repository.VehicleRepository;
-import com.example.vehiclebackend.request.Vehicle.VehicleUpdateRequest;
+import com.example.vehiclebackend.request.VehicleUpdateRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,11 +11,11 @@ import java.util.Optional;
 @Service
 public class VehicleService {
 
-    private VehicleRepository vehicleRepository;
+    private final VehicleRepository vehicleRepository;
 
-    private ModelService modelService;
+    private final ModelService modelService;
 
-    public VehicleService(VehicleRepository vehicleRepository) {
+    public VehicleService(VehicleRepository vehicleRepository, ModelService modelService) {
         this.vehicleRepository = vehicleRepository;
         this.modelService = modelService;
     }

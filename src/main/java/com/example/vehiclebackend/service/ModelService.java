@@ -11,13 +11,18 @@ import java.util.List;
 @Service
 public class ModelService {
 
-    ModelRepository modelRepository;
+    private final ModelRepository modelRepository;
+
+    public ModelService(ModelRepository modelRepository) {
+        this.modelRepository = modelRepository;
+    }
+
     public List<Model> getAllModels() {
         return modelRepository.findAll();
     }
 
 
-    public Model saveModel(@RequestBody Model model) {
+    public Model saveModel( Model model) {
         return modelRepository.save(model);
     }
 
@@ -25,7 +30,16 @@ public class ModelService {
         return modelRepository.findById(modelId).orElse(null);
     }
 
-    public List<Model> getModelByBrand(@PathVariable String brand) {
+    public List<Model> getModelByBrand( String brand) {
         return modelRepository.findByBrand(brand);
+    }
+
+    public void deleteModelById(Long modelId) {
+        try {
+            modelRepository.deleteById(modelId);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 }
