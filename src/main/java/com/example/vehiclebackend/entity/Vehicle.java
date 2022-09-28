@@ -13,6 +13,7 @@ public class Vehicle {
 
     @Id
     Long id;
+    @Column(unique = true)
     String plate;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -20,9 +21,17 @@ public class Vehicle {
     Model model;
 
     Number modelYear;
+
+    @Column(nullable = true)
     String notes;
+
+    @Column(nullable = true)
     BigDecimal longitude;
+
+    @Column(nullable = true)
     BigDecimal latitude;
+
+    @Column(nullable = true)
     BigDecimal direction;
 
 }

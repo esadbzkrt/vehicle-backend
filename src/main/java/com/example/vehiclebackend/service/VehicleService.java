@@ -16,13 +16,6 @@ public class VehicleService {
     }
 
 
-    public List<Vehicle> getAllVehicles() {
-        return vehicleRepository.findAll();
-    }
-
-    public Vehicle getVehicleById(Long vehicleId) {
-        return vehicleRepository.findById(vehicleId).orElse(null);
-    }
 
 
 }
