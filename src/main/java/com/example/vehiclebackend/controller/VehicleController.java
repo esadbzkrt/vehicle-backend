@@ -1,6 +1,7 @@
 package com.example.vehiclebackend.controller;
 
 import com.example.vehiclebackend.entity.Vehicle;
+import com.example.vehiclebackend.request.VehicleCreateRequest;
 import com.example.vehiclebackend.request.VehicleUpdateRequest;
 import com.example.vehiclebackend.service.VehicleService;
 import org.springframework.web.bind.annotation.*;
@@ -33,7 +34,7 @@ public class VehicleController {
     }
 
     @PostMapping
-    public Vehicle createVehicle(@RequestBody Vehicle newVehicle) {
+    public Vehicle createVehicle(@RequestBody VehicleCreateRequest newVehicle) {
         return vehicleService.saveVehicle(newVehicle);
     }
 

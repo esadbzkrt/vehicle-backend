@@ -2,6 +2,7 @@ package com.example.vehiclebackend.service;
 
 import com.example.vehiclebackend.entity.Vehicle;
 import com.example.vehiclebackend.repository.VehicleRepository;
+import com.example.vehiclebackend.request.VehicleCreateRequest;
 import com.example.vehiclebackend.request.VehicleUpdateRequest;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +31,24 @@ public class VehicleService {
     }
 
 
+
+
+
+
+    public void deleteVehicleById(Long vehicleId) {
+        vehicleRepository.deleteById(vehicleId);
+    }
+
+    public Vehicle saveVehicle(VehicleCreateRequest newVehicle) {
+        Vehicle vehicle = new Vehicle();
+        vehicle.setPlate(newVehicle.getPlate());
+        vehicle.setModel(modelService.getModel(newVehicle.getModelId()));
+        vehicle.setModelYear(newVehicle.getModelYear());
+        vehicle.setNotes(newVehicle.getNotes());
+        vehicleRepository.save(vehicle);
+        return vehicle;
+    }
+
     public Vehicle updateVehicle(Long vehicleId, VehicleUpdateRequest vehicleUpdateRequest) {
         Optional<Vehicle> vehicle = vehicleRepository.findById(vehicleId);
         if (vehicle.isPresent()) {
@@ -40,17 +59,7 @@ public class VehicleService {
             updatedVehicle.setNotes(vehicleUpdateRequest.getNotes());
             vehicleRepository.save(updatedVehicle);
             return updatedVehicle;
-        } else {
-            return null;
         }
-    }
-
-
-    public Vehicle saveVehicle(Vehicle newVehicle) {
-        return vehicleRepository.save(newVehicle);
-    }
-
-    public void deleteVehicleById(Long vehicleId) {
-        vehicleRepository.deleteById(vehicleId);
+        return null;
     }
 }

@@ -2,10 +2,7 @@ package com.example.vehiclebackend.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "locations")
@@ -14,6 +11,10 @@ public class Location {
     @Id
     @GeneratedValue(generator = "location_id_seq")
     Long id;
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "location")
+    Vehicle vehicle;
+
     Double longitude;
     Double latitude;
     Double direction;

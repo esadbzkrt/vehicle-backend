@@ -26,8 +26,8 @@ public class Vehicle {
     @Column(nullable = true)
     String notes;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "location_id", nullable = false)
+    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinColumn(name = "location_id")
     Location location;
 
 }
