@@ -9,6 +9,5 @@ public class VehicleCreateRequest {
         Long modelId;
         Number modelYear;
         String notes;
-        Long locationId;
 
 }

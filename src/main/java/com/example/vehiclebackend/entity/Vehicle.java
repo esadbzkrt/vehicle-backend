@@ -1,6 +1,7 @@
 package com.example.vehiclebackend.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -13,10 +14,10 @@ public class Vehicle {
     @Id
     @GeneratedValue(generator = "vehicle_id_seq")
     Long id;
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     String plate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "model_id", nullable = false)
     Model model;
 
@@ -26,8 +27,11 @@ public class Vehicle {
     @Column(nullable = true)
     String notes;
 
-    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    @JoinColumn(name = "location_id")
-    Location location;
+    @Column(nullable = true)
+    Double longitude;
+    @Column(nullable = true)
+    Double latitude;
+    @Column(nullable = true)
+    Double direction;
 
 }
