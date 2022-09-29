@@ -31,10 +31,6 @@ public class VehicleService {
     }
 
 
-
-
-
-
     public void deleteVehicleById(Long vehicleId) {
         vehicleRepository.deleteById(vehicleId);
     }
