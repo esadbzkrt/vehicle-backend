@@ -4,10 +4,12 @@ import com.example.vehiclebackend.entity.Vehicle;
 import com.example.vehiclebackend.repository.VehicleRepository;
 import com.example.vehiclebackend.request.VehicleCreateRequest;
 import com.example.vehiclebackend.request.VehicleUpdateRequest;
+import com.example.vehiclebackend.response.VehicleResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class VehicleService {
@@ -22,12 +24,14 @@ public class VehicleService {
     }
 
 
-    public List<Vehicle> getAllVehicles() {
-        return vehicleRepository.findAll();
+    public List<VehicleResponse> getAllVehicles() {
+        List<Vehicle> vehicles = vehicleRepository.findAll();
+        return vehicles.stream().map(VehicleResponse::new).collect(Collectors.toList());
     }
 
-    public Vehicle getVehicleById(Long vehicleId) {
-        return vehicleRepository.findById(vehicleId).orElse(null);
+    public VehicleResponse getVehicleById(Long vehicleId) {
+        Optional<Vehicle> vehicle = vehicleRepository.findById(vehicleId);
+        return vehicle.map(VehicleResponse::new).orElse(null);
     }
 
 

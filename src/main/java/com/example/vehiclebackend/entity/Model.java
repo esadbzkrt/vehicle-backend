@@ -19,7 +19,7 @@ public class Model {
     String model;
 
     @OneToMany(mappedBy = "model", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-            @JsonIgnore
+    @JsonIgnore
     List<Vehicle> vehicles;
 
 }

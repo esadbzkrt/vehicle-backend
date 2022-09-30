@@ -3,6 +3,7 @@ package com.example.vehiclebackend.controller;
 import com.example.vehiclebackend.entity.Vehicle;
 import com.example.vehiclebackend.request.VehicleCreateRequest;
 import com.example.vehiclebackend.request.VehicleUpdateRequest;
+import com.example.vehiclebackend.response.VehicleResponse;
 import com.example.vehiclebackend.service.VehicleService;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,12 +20,12 @@ public class VehicleController {
     }
 
     @GetMapping
-    public List<Vehicle> getAllVehicles() {
+    public List<VehicleResponse> getAllVehicles() {
         return vehicleService.getAllVehicles();
     }
 
     @GetMapping("/{vehicleId}")
-    public Vehicle getVehicleById(@PathVariable Long vehicleId) {
+    public VehicleResponse getVehicleById(@PathVariable Long vehicleId) {
         return vehicleService.getVehicleById(vehicleId);
     }
 
